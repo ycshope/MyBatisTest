@@ -1,0 +1,9 @@
+server:
+  port: 28888
+spring:
+  mvc:
+    #静态资源通过 http://localhost:8080/ 访问
+    static-path-pattern: /
+  resources:
+    #仅将/static/下的目录作为静态资源
+    static-locations: [ classpath:/static/ ]
