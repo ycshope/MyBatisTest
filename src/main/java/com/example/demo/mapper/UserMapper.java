@@ -1,5 +1,9 @@
 package com.example.demo.mapper;
 
+import com.example.demo.po.User;
+
+import java.util.List;
+
 /**
  * MyBatis中的mapper接口相当于以前的dao。但是区别在于，mapper仅仅是接口，我们不需要提供实现类
  */
@@ -16,7 +20,28 @@ public interface UserMapper {
     /**
      * 添加用户信息
      * 返回值是int表示查询结果的行数
+     *
      * @return
      */
     int insertUser();
+
+    /**
+     * 更新用户
+     */
+    void updateUser();
+
+    /**
+     * 删除用户
+     */
+    void deleteUser();
+
+    /**
+     * 查询单个用户
+     */
+    User getUserById();
+
+    /**
+     * 查询所有
+     */
+    List<User> getAllUser();
 }

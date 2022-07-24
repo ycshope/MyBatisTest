@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  1、映射文件的nampespace要和mapper接口的全类型保持一致      -->
+<mapper namespace="com.example.demo.mapper.ParamMapper">
+    <!--  public User getUserByName(String username);  -->
+    <select id="getUserByName" resultType="User">
+        <!--  占位符方式      -->
+        select * from t_user where username = #{username}
+        <!--   字符替换方法需要手动添加单引号     -->
+        <!--        select * from t_user where username = '${username}'-->
+    </select>
+
+    <!--    User checkLogin(String username,String password);-->
+    <select id="checkLogin" resultType="User">
+        <!--  占位符方式      -->
+        select * from t_user where username = #{param1} and password = #{param2}
+        <!--   字符替换方式     -->
+        <!--        select * from t_user where username = '${param1}' and password = '${param2}'-->
+    </select>
+
+    <!--  User checkLoginByMap(Map<String, Object> map);  -->
+    <select id="checkLoginByMap" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+
+    <!--    int createUser(User user);-->
+    <insert id="createUser">
+        insert into t_user values(null,#{username},#{password},#{age},#{sex},#{email})
+    </insert>
+
+    <!--    User checkLoginByParam(@Param("username") String username,@Param("password") String password);-->
+    <select id="checkLoginByParam" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+
+</mapper>

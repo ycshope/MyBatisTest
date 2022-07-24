@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### DBdata ###
+db_config/
+db_data/

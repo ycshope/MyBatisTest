@@ -1,0 +1,39 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  1、映射文件的nampespace要和mapper接口的全类型保持一致      -->
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <!--
+        2、映射文件中的SQL语句的id要和mapper接口中的方法一致
+        int insertUser();
+    -->
+    <insert id="insertUser">
+        insert into t_user values(null,'admin','123',23,'男','1234@q.com')
+    </insert>
+
+    <!--    void updateUser();-->
+    <update id="updateUser">
+        update t_user set username = '张三' where id = 1
+    </update>
+
+    <!--  void deleteUser();  -->
+    <delete id="deleteUser">
+        delete from t_user where id = 3
+    </delete>
+
+    <!--    User getUserById();-->
+    <!--
+        查询功能的标签必须设置resultType或resultMap用于告知MyBatis结果的类型
+        resultType: 设置默认的映射关系(属性名称和数据库字段要一一对应)
+        resultMap: 设置自定义的映射关系
+    -->
+    <select id="getUserById" resultType="com.example.demo.po.User">
+        select * from t_user where id = 1
+    </select>
+
+    <!--    List<User> getAllUser();-->
+    <!--   <typeAlias type="com.example.demo.po.User" alias="User"></typeAlias> 设置别名-->
+    <select id="getAllUser" resultType="User">
+        select * from t_user
+    </select>
+</mapper>
